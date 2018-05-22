@@ -1,6 +1,3 @@
-import os
-os.environ["MKL_THREADING_LAYER"] = "GNU"
-
 import pandas as pd
 import numpy as np
 from scipy.io import loadmat
