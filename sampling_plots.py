@@ -118,7 +118,7 @@ plt.show()
 import pandas as pd
 import numpy as np
 from scipy.io import loadmat
-from nmf_gpp import link_exp_to_gauss, link_rectgauss
+from core import link_exp_to_gauss, link_rectgauss
 import matplotlib.pyplot as plt
 
 nr_D = 800
