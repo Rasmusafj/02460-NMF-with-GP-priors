@@ -1,6 +1,6 @@
 # 02460-NMF-with-GP-priors
 This repository contains the final product from DTU course 02460 -
-advanced machine learning where we worked on Non-negative matrix factorization
+advanced machine learning, where we worked on Non-negative matrix factorization
 with Gaussian Process priors for raman spectroscopy.
 
 The main hand-in of the project was the article included in ```article/NMF-GPP-raman.pdf```
@@ -30,6 +30,6 @@ source activate gpp-nmf
 
 While running the `sampling.py` script, we encountered a "chains not unique" bug.
 From search on the internet, we found that the current (only) way to solve the problem
-was to change the source code according to the [this comment](https://github.com/pymc-devs/pymc3/issues/2856#issuecomment-366039215)
+was to change the source code according to the [this comment](https://github.com/pymc-devs/pymc3/issues/2856#issuecomment-366039215).
 This source code manipulation is required to run the sampling script.
 

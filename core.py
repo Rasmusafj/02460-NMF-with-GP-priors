@@ -133,7 +133,7 @@ def nmf_gpp_hmc(X, M, **kwargs):
     with pm.Model() as mod:
         ls_D = pm.Gamma(name='lsd', alpha=3, beta=1, shape=(dimD,))
         #covD = pm.gp.cov.ExpQuad(input_dim=dimD, ls=ls_D, active_dims=400)
-        covD = pm.gp.cov.ExpQuad(input_dim=dimD, ls=ls_D)
+        covD = pm.gp.cov.Exponential(input_dim=dimD, ls=ls_D)
         gpD = CustomLatent(cov_func=covD)
         d = gpD.prior("d", X=d_in.reshape(K, M))
 
@@ -146,7 +146,7 @@ def nmf_gpp_hmc(X, M, **kwargs):
                                                      'd': d,
                                                      'h': h})
 
-        db = pm.backends.NDArray(db_name)
+        db = pm.backends.Text(db_name)
         trace = pm.sample(numSamples, njobs=1, trace=db, chains=numChains, tune=5)
 
     return trace
