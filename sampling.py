@@ -10,5 +10,5 @@ X = mat["X"]
 K, L = X.shape
 M = 2
 
-trace = nmf_gpp_hmc(X, M, numSamples=10000, dimD=2, dimH=1, numChains=1,
+trace = nmf_gpp_hmc(X, M, numSamples=2000, dimD=2, dimH=1, numChains=3,
         db_name='chains')

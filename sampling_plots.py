@@ -90,6 +90,3 @@ for i in range(nr_chains):
     plt.hist(lsd_log, bins=50)
     plt.savefig("hist_d.png")
     plt.show()
-
-
-    # %%
