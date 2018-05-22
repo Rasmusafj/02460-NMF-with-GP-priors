@@ -2,9 +2,8 @@ from scipy.io import loadmat
 import numpy as np
 import matplotlib.pyplot as plt
 from math import sqrt
-from sklearn.preprocessing import normalize
 
-from nmf_gpp import nmf_ls, nmf_gpp_map, link_exp_to_gauss, link_rectgauss, rbf, get_2d_rbf_kernel
+from core import nmf_ls, nmf_gpp_map, link_exp_to_gauss, link_rectgauss, rbf, get_2d_rbf_kernel
 file_name1 = '50x50_nw250_nhs2_k4_1'
 mat1 = loadmat('../data/'+file_name1+'.mat')
 X1 = mat1["X"]

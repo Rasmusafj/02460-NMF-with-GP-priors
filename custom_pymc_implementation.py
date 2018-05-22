@@ -9,7 +9,6 @@ from pymc3.gp.util import (conditioned_vars,
 
 from pymc3.gp import Latent
 
-
 @conditioned_vars(["X", "f"])
 class CustomLatent(Latent):
     R"""
