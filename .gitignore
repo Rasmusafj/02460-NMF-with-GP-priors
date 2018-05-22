@@ -1,0 +1,20 @@
+# Ignore pycache
+__pycache__/
+
+# Mac computers suck
+**/.DS_Store
+
+# Pycharm meta-data
+**/.idea/
+
+# Ignore embeddings
+**/pretrained-embeddings/
+
+# Ignore compiled python files
+**/*.pyc
+
+# Ignore trained models
+**/*.hdf5
+
+# Ignore numpy saves
+**/*.npy

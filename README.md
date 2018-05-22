@@ -21,7 +21,12 @@ based on the generated chain(s) from `sampling.py`
 hamiltonian sampling scheme
 
 ## Setup
-To run the code, run blah blah blah TODO
+Run the following commands to setup the conda environment.
+
+```
+conda env create -f environment.yml
+source activate gpp-nmf
+```
 
 While running the `sampling.py` script, we encountered a "chains not unique" bug.
 From search on the internet, we found that the current (only) way to solve the problem
