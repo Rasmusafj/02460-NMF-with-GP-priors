@@ -45,7 +45,7 @@ def link_rectgauss(h, pars):
 def get_2d_rbf_kernel(beta, shape_plate):
     dummy = np.ones(shape_plate)
     dummy = np.argwhere(dummy)
-    distances = calcDistanceMatrixFastEuclidean(dummy)
+    distances = calcDistanceMatrixFastEuclidean(dummy) ** 2
     final = np.exp((-distances) / (beta ** 2))
 
     return final
