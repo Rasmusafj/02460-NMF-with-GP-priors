@@ -1,6 +1,6 @@
 from scipy.io import loadmat
 import numpy as np
-from nmf_gpp import nmf_gpp_hmc
+from core import nmf_gpp_hmc
 
 np.random.seed(125)
 
