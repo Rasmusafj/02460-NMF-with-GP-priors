@@ -147,7 +147,7 @@ def nmf_gpp_hmc(X, M, **kwargs):
                                                      'h': h})
 
         db = pm.backends.Text(db_name)
-        trace = pm.sample(numSamples, njobs=1, trace=db, chains=numChains, tune=5)
+        trace = pm.sample(numSamples, njobs=1, trace=db, chains=numChains)
 
     return trace
 
