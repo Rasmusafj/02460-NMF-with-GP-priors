@@ -1,7 +1,8 @@
 # 02460-NMF-with-GP-priors
 This repository contains the final product from DTU course 02460 -
 advanced machine learning, where we worked on Non-negative matrix factorization
-with Gaussian Process priors for raman spectroscopy.
+with Gaussian Process priors for raman spectroscopy. The group consists of David Frich Hansen,
+Rasmus Arpe Fogh Jensen, Peter Edsberg Møllgaard and Søren Emil Schmidt.
 
 The main hand-in of the project was the article included in ```article/NMF-GPP-Raman.pdf```
 
