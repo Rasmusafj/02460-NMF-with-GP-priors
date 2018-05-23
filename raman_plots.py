@@ -3,7 +3,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from math import sqrt
 
-from core import nmf_ls, nmf_gpp_map, link_exp_to_gauss, link_rectgauss, rbf, get_2d_rbf_kernel
+from core import nmf_ls, nmf_gpp_map, link_exp_to_gauss, link_rectgauss, rbf, get_2d_exp_kernel
 
 file_name1 = '50x50_nw250_noise12_nhs2_k4_21'
 mat1 = loadmat('./data/'+file_name1+'.mat')
@@ -30,7 +30,7 @@ for i in range(K):
        cov_D_1d[i, j] = rbf(beta_D, i + 1, j + 1)
 
 dim = int(sqrt(len(X)))
-cov_D_2d = get_2d_rbf_kernel(beta_D, (dim,dim))
+cov_D_2d = get_2d_exp_kernel(beta_D, (dim,dim))
 
 cov_D_1d = cov_D_1d + 1e-5 * np.eye(K)
 cov_D_2d = cov_D_2d + 1e-5 * np.eye(K)
