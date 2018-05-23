@@ -11,9 +11,9 @@ M = 2
 
 # Variables to be chosen
 burn = 500
-nr_chains = 1
+nr_chains = 3
 
-mat = loadmat('../data/sampling.mat')
+mat = loadmat('./data/sampling.mat')
 a = mat['a']
 vp = mat['vp']
 
@@ -25,9 +25,9 @@ H_trace_cols = []
 for i in range(nr_H):
     H_trace_cols.append("h__{0}".format(i))
 
-for i in range(nr_chains):
+for k in range(nr_chains):
     # Get chain
-    chain = pd.read_csv("small01/chain-{}.csv".format(i))
+    chain = pd.read_csv("small01/chain-{}.csv".format(k))
 
     # Get values of trace
     D_trace_ = chain[D_trace_cols][burn:].values
@@ -69,12 +69,10 @@ for i in range(nr_chains):
     plt.fill_between(np.arange(len(H_mean[1,:])), H_li[1,:], H_ui[1,:],color='blue', alpha=.5)
     plt.plot(H_m[1, :], color='blue')
     plt.legend(["Mean","95% Confidence Int."], loc = 2)
-    plt.savefig("testiness_simulation.png")
+    plt.savefig("posterior_simulation_{}.pdf".format(k))
     plt.show()
 
-for i in range(nr_chains):
-    chain = pd.read_csv("small01/chain-{}.csv".format(i))
-    if not i:
+    if not k:
         lsd_log = chain["lsd_log____0"].values[burn:]
         lsh_log = chain["lsh_log____0"].values[burn:]
     else:
@@ -83,10 +81,10 @@ for i in range(nr_chains):
 
     # Histogram of width of covariance for H
     plt.hist(lsh_log, bins=50)
-    plt.savefig("hist_h.png")
+    plt.savefig("hist_h_simulation_{}.pdf".format(k))
     plt.show()
 
     # Histogram of width of covariance for D
     plt.hist(lsd_log, bins=50)
-    plt.savefig("hist_d.png")
+    plt.savefig("hist_d_simulation_{}.pdf".format(k))
     plt.show()
