@@ -13,11 +13,11 @@ hamiltonian sampling scheme.
 
 * `raman_plots.py` - Script used to generate the raman spectra plots of the article
 
-* `sampling.py` - Generates a single monte carlo chain (modify for multiple)
-and dumps it into the `/chains/` folder.
+* `sampling.py` - Generates three monte carlo chains
+and dumps them into the `/chains/` folder.
 
 * `sampling_plots.py` - Script used to generate the sampling plots of the article
-based on the generated chain(s) from `sampling.py`
+based on the generated chains from `sampling.py`
 hamiltonian sampling scheme
 
 ## Setup

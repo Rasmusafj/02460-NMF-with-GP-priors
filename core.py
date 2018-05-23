@@ -42,7 +42,7 @@ def link_rectgauss(h, pars):
 ######## kernels #######
 ########################
 
-def get_2d_rbf_kernel(beta, shape_plate):
+def get_2d_exp_kernel(beta, shape_plate):
     dummy = np.ones(shape_plate)
     dummy = np.argwhere(dummy)
     distances = calcDistanceMatrixFastEuclidean(dummy)
@@ -52,6 +52,14 @@ def get_2d_rbf_kernel(beta, shape_plate):
 
 
 def calcDistanceMatrixFastEuclidean(points):
+    """
+    Just a memory efficient way to calculate euclidian distances
+
+    http://code.activestate.com/recipes/498246-calculate-the-distance-matrix-for-n-dimensional-po/
+
+    :param points: List of coordinates
+    :return: Distance matrix
+    """
     numPoints = len(points)
     distMat = np.sqrt(np.sum((repmat(points, numPoints, 1) - repeat(points, numPoints, axis=0))**2, axis=1))
     return distMat.reshape((numPoints,numPoints))
@@ -126,9 +134,6 @@ def nmf_gpp_hmc(X, M, **kwargs):
     d_in = np.arange(K*M)[:, None]
     h_in = np.arange(M*L)[:, None]
 
-    # custom likelihood for X given d and h.
-    # TODO: Find log-likelihood parameterized by X, d and h. Eq. (4) with reshape and link function
-
     # begin actual model
     with pm.Model() as mod:
         ls_D = pm.Gamma(name='lsd', alpha=3, beta=1, shape=(dimD,))
@@ -147,7 +152,7 @@ def nmf_gpp_hmc(X, M, **kwargs):
                                                      'h': h})
 
         db = pm.backends.Text(db_name)
-        trace = pm.sample(numSamples, njobs=1, trace=db, chains=numChains, tune=5)
+        trace = pm.sample(numSamples, njobs=1, trace=db, chains=numChains)
 
     return trace
 
