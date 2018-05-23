@@ -134,9 +134,6 @@ def nmf_gpp_hmc(X, M, **kwargs):
     d_in = np.arange(K*M)[:, None]
     h_in = np.arange(M*L)[:, None]
 
-    # custom likelihood for X given d and h.
-    # TODO: Find log-likelihood parameterized by X, d and h. Eq. (4) with reshape and link function
-
     # begin actual model
     with pm.Model() as mod:
         ls_D = pm.Gamma(name='lsd', alpha=3, beta=1, shape=(dimD,))
