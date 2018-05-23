@@ -3,7 +3,7 @@ This repository contains the final product from DTU course 02460 -
 advanced machine learning, where we worked on Non-negative matrix factorization
 with Gaussian Process priors for raman spectroscopy.
 
-The main hand-in of the project was the article included in ```article/NMF-GPP-raman.pdf```
+The main hand-in of the project was the article included in ```article/NMF-GPP-Raman.pdf```
 
 ## Code
 The code for the project is divided into seperate files.
