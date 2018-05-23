@@ -18,6 +18,10 @@ a = mat['a']
 vp = mat['vp']
 
 D_trace_cols = []
+
+prefix = './results/'
+file_extension = '.svg'
+
 for i in range(nr_D):
     D_trace_cols.append("d__{0}".format(i))
 
@@ -27,7 +31,7 @@ for i in range(nr_H):
 
 for k in range(nr_chains):
     # Get chain
-    chain = pd.read_csv("small01/chain-{}.csv".format(k))
+    chain = pd.read_csv("chains/chain-{}.csv".format(k))
 
     # Get values of trace
     D_trace_ = chain[D_trace_cols][burn:].values
@@ -69,8 +73,8 @@ for k in range(nr_chains):
     plt.fill_between(np.arange(len(H_mean[1,:])), H_li[1,:], H_ui[1,:],color='blue', alpha=.5)
     plt.plot(H_m[1, :], color='blue')
     plt.legend(["Mean","95% Confidence Int."], loc = 2)
-    plt.savefig("posterior_simulation_{}.pdf".format(k))
-    plt.show()
+    plt.savefig(prefix + "posterior_simulation_{}".format(k) + file_extension)
+    plt.close()
 
     if not k:
         lsd_log = chain["lsd_log____0"].values[burn:]
@@ -81,10 +85,10 @@ for k in range(nr_chains):
 
     # Histogram of width of covariance for H
     plt.hist(lsh_log, bins=50)
-    plt.savefig("hist_h_simulation_{}.pdf".format(k))
-    plt.show()
+    plt.savefig(prefix + "hist_h_simulation_{}".format(k) + file_extension)
+    plt.close()
 
     # Histogram of width of covariance for D
     plt.hist(lsd_log, bins=50)
-    plt.savefig("hist_d_simulation_{}.pdf".format(k))
-    plt.show()
+    plt.savefig(prefix + "hist_d_simulation_{}".format(k) + file_extension)
+    plt.close()
