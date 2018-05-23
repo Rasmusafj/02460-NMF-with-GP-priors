@@ -20,7 +20,7 @@ vp = mat['vp']
 D_trace_cols = []
 
 prefix = './results/'
-file_extension = '.svg'
+file_extension = '.pdf'
 
 for i in range(nr_D):
     D_trace_cols.append("d__{0}".format(i))
@@ -68,10 +68,12 @@ for k in range(nr_chains):
     plt.figure()
     plt.subplot(2,1,1)
     plt.plot(spectra[0,:], color='green')
+    plt.gca().axes.get_yaxis().set_visible(False)
     plt.legend(["True Spectrum"], loc = 2)
     plt.subplot(2,1,2)
     plt.fill_between(np.arange(len(H_mean[1,:])), H_li[1,:], H_ui[1,:],color='blue', alpha=.5)
     plt.plot(H_m[1, :], color='blue')
+    plt.gca().axes.get_yaxis().set_visible(False)
     plt.legend(["Mean","95% Confidence Int."], loc = 2)
     plt.savefig(prefix + "posterior_simulation_{}".format(k) + file_extension)
     plt.close()
